@@ -946,9 +946,6 @@ def main():
         <p style="font-size: 1.2rem; color: #a0a0ff;">
             Explore the relationship between vaccine coverage and life expectancy
         </p>
-        <p style="font-size: 0.9rem; color: #7080a0;">
-            Pipeline matches WQD7001_GRP11_Modelling.ipynb exactly
-        </p>
     </div>
     """, unsafe_allow_html=True)
     
