@@ -919,7 +919,6 @@ def create_sidebar():
     <div style="padding: 10px; font-size: 0.8rem; color: #a0a0ff;">
         <h4 style="color: #00d4ff;">ℹAbout</h4>
         <p>This application predicts life expectancy based on vaccine coverage data using machine learning.</p>
-        <p style="margin-top: 10px;"><b>Pipeline:</b> Matches WQD7001_GRP11_Modelling.ipynb</p>
         <p style="margin-top: 10px; font-size: 0.75rem; color: #7080a0;">
         <b>Tip:</b> Place model files in the <code>models/</code> directory before running.
         </p>
