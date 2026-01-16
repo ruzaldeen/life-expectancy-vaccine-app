@@ -468,6 +468,40 @@ def create_global_overview(df):
     
     st.plotly_chart(fig, use_container_width=True)
 
+## OLD VERSION ##
+# def create_vaccine_coverage_analysis(df):
+#     """Create vaccine coverage analysis"""
+#     st.header("Vaccine Coverage Analysis")
+    
+#     # Average coverage by vaccine
+#     vaccine_data = []
+#     for vaccine in VACCINE_COLS:
+#         if vaccine in df.columns:
+#             avg_coverage = df[vaccine].mean()
+#             vaccine_data.append({
+#                 'Vaccine': vaccine,
+#                 'Average Coverage (%)': avg_coverage
+#             })
+    
+#     if vaccine_data:
+#         vaccine_df = pd.DataFrame(vaccine_data).sort_values('Average Coverage (%)', ascending=False)
+        
+#         fig = px.bar(
+#             vaccine_df,
+#             x='Vaccine',
+#             y='Average Coverage (%)',
+#             color='Average Coverage (%)',
+#             color_continuous_scale='Viridis',
+#             title='Average Vaccine Coverage by Type'
+#         )
+        
+#         fig.update_layout(
+#             template='plotly_dark',
+#             height=500,
+#             showlegend=False
+#         )
+        
+#         st.plotly_chart(fig, use_container_width=True)
 
 def create_vaccine_coverage_analysis(df):
     """Create vaccine coverage analysis"""
@@ -480,7 +514,8 @@ def create_vaccine_coverage_analysis(df):
             avg_coverage = df[vaccine].mean()
             vaccine_data.append({
                 'Vaccine': vaccine,
-                'Average Coverage (%)': avg_coverage
+                'Average Coverage (%)': avg_coverage,
+                'Description': VACCINE_INFO.get(vaccine, 'No description available')
             })
     
     if vaccine_data:
@@ -492,13 +527,26 @@ def create_vaccine_coverage_analysis(df):
             y='Average Coverage (%)',
             color='Average Coverage (%)',
             color_continuous_scale='Viridis',
-            title='Average Vaccine Coverage by Type'
+            title='Average Vaccine Coverage by Type',
+            hover_data={
+                'Vaccine': True,
+                'Average Coverage (%)': ':.2f',
+                'Description': True
+            }
         )
         
         fig.update_layout(
             template='plotly_dark',
             height=500,
             showlegend=False
+        )
+        
+        # Customize hover template for better formatting
+        fig.update_traces(
+            hovertemplate='<b>%{x}</b><br>' +
+                         'Average Coverage: %{y:.2f}%<br>' +
+                         '%{customdata[0]}<br>' +
+                         '<extra></extra>'
         )
         
         st.plotly_chart(fig, use_container_width=True)
@@ -538,6 +586,42 @@ def create_scatter_analysis(df):
         st.plotly_chart(fig, use_container_width=True)
 
 
+## OLD VERSION ##
+# def create_correlation_analysis(df):
+#     """Create correlation analysis"""
+#     st.header("Correlation Analysis")
+    
+#     # Calculate correlation with life expectancy
+#     vaccine_cols_present = [v for v in VACCINE_COLS if v in df.columns]
+    
+#     if vaccine_cols_present and 'life_expectancy' in df.columns:
+#         correlations = []
+#         for vaccine in vaccine_cols_present:
+#             corr = df[vaccine].corr(df['life_expectancy'])
+#             correlations.append({
+#                 'Vaccine': vaccine,
+#                 'Correlation': corr
+#             })
+        
+#         corr_df = pd.DataFrame(correlations).sort_values('Correlation', ascending=True)
+        
+#         fig = px.bar(
+#             corr_df,
+#             x='Correlation',
+#             y='Vaccine',
+#             orientation='h',
+#             color='Correlation',
+#             color_continuous_scale='RdYlGn',
+#             title='Correlation between Vaccine Coverage and Life Expectancy'
+#         )
+        
+#         fig.update_layout(
+#             template='plotly_dark',
+#             height=600
+#         )
+        
+#         st.plotly_chart(fig, use_container_width=True)
+
 def create_correlation_analysis(df):
     """Create correlation analysis"""
     st.header("Correlation Analysis")
@@ -551,7 +635,8 @@ def create_correlation_analysis(df):
             corr = df[vaccine].corr(df['life_expectancy'])
             correlations.append({
                 'Vaccine': vaccine,
-                'Correlation': corr
+                'Correlation': corr,
+                'Description': VACCINE_INFO.get(vaccine, 'No description available')
             })
         
         corr_df = pd.DataFrame(correlations).sort_values('Correlation', ascending=True)
@@ -563,12 +648,25 @@ def create_correlation_analysis(df):
             orientation='h',
             color='Correlation',
             color_continuous_scale='RdYlGn',
-            title='Correlation between Vaccine Coverage and Life Expectancy'
+            title='Correlation between Vaccine Coverage and Life Expectancy',
+            hover_data={
+                'Vaccine': True,
+                'Correlation': ':.3f',
+                'Description': True
+            }
         )
         
         fig.update_layout(
             template='plotly_dark',
             height=600
+        )
+        
+        # Customize hover template for better formatting
+        fig.update_traces(
+            hovertemplate='<b>%{y}</b><br>' +
+                         'Correlation: %{x:.3f}<br>' +
+                         '%{customdata[0]}<br>' +
+                         '<extra></extra>'
         )
         
         st.plotly_chart(fig, use_container_width=True)
