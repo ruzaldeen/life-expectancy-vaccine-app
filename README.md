@@ -99,7 +99,7 @@ pip install -r requirements.txt
 
 3. Run the application:
 ```bash
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
 ## **5. File Information Details**
@@ -107,7 +107,7 @@ streamlit run app.py
 ### **i. File Structure**
 ```
 vaccine_life_expectancy_app/
-├── app.py                 # Main Streamlit application
+├── streamlit_app.py                 # Main Streamlit application
 ├── requirements.txt       # Python dependencies
 ├── README.md             # This file
 └── models/               # (Optional) Store your trained models here
