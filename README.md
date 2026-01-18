@@ -153,10 +153,10 @@ When training your model in Google Colab, save the following artifacts using job
 import joblib
 
 # After training your model
-joblib.dump(model, 'model.joblib')
-joblib.dump(scaler, 'scaler.joblib')  # Optional: if you used StandardScaler
-joblib.dump(imputer, 'imputer.joblib')  # Optional: if you used SimpleImputer
-joblib.dump(feature_names, 'feature_names.joblib')  # List of feature column names
+joblib.dump(model, 'model.pkl')
+joblib.dump(scaler, 'scaler.pkl')  # Optional: if you used StandardScaler
+joblib.dump(imputer, 'imputer.pkl')  # Optional: if you used SimpleImputer
+joblib.dump(feature_names, 'feature_names.pkl')  # List of feature column names
 ```
 
 #### 2. Expected Feature Names
@@ -185,12 +185,12 @@ Algeria,2020,99.0,94.0,84.0,80.0,73.257
 ## **6. How to Use**
 
 ##### For Visualization Only:
-1. Select "📊 Visualization Only" in the sidebar
+1. Select "Visualization Only" in the sidebar
 2. Upload your dataset (CSV/TXT/Excel)
 3. Navigate through the tabs to explore different visualizations
 
 ##### For Prediction Only:
-1. Select "🔮 Prediction Only" in the sidebar
+1. Select "Prediction Only" in the sidebar
 2. Upload your trained model (.joblib or .pkl)
 3. Optionally upload scaler, imputer, and feature names
 4. Click "Load Model"
