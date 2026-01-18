@@ -38,12 +38,12 @@ st.set_page_config(
 # ============================================================================
 # PATHS CONFIGURATION
 # ============================================================================
-MODELS_DIR = os.path.join("..", "models")
-DATA_DIR = os.path.join("..", "data")
+MODELS_DIR = "models"
+DATA_DIR = "data"
 DATASET_PATH = "joined_cty_vacc.csv"
 
 # Model artifact paths
-MODEL_PATH = os.path.join(MODELS_DIR, "model.pkl")
+MODEL_PATH = os.path.join(MODELS_DIR, "model.pkl.gz")
 SCALER_PATH = os.path.join(MODELS_DIR, "scaler.pkl")
 LABEL_ENCODER_PATH = os.path.join(MODELS_DIR, "label_encoder.pkl")
 FEATURE_NAMES_PATH = os.path.join(MODELS_DIR, "feature_columns.pkl")
