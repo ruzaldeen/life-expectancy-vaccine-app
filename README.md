@@ -92,7 +92,9 @@ A Streamlit-based data product that predicts life expectancy based on vaccine co
 
 1. Clone or download this project
 
-2. Install dependencies:
+2. Enusre you are using Python 3.10 for this project
+
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
@@ -107,14 +109,38 @@ streamlit run streamlit_app.py
 ### **i. File Structure**
 ```
 vaccine_life_expectancy_app/
-├── streamlit_app.py                 # Main Streamlit application
-├── requirements.txt       # Python dependencies
-├── README.md             # This file
-└── models/               # (Optional) Store your trained models here
-    ├── model.joblib
-    ├── scaler.joblib
-    ├── imputer.joblib
-    └── feature_names.joblib
+|   LICENSE
+|   README.md
+|   requirements.txt
+|   streamlit_app.py   # Main application file
+|
++---data
+|       immunization_developing_country.csv
+|       immunization_global.csv
+|       joined_cty_vacc.csv
+|       life_expectancy_developing_country.csv
+|
++---EDA
+|       Immunization-2.ipynb
+|       Joined_EDA-2.ipynb
+|       Life_expectancy_developing_country.ipynb
+|
++---jupyter_notebook
+|       Data Cleaning.ipynb   # Data Cleaning notebook
+|       Immunization.ipynb   # EDA notebook
+|       Joined_EDA.ipynb   # EDA notebook
+|       Life_expectancy_developing_country.ipynb   # EDA notebook
+|       WQD7001_GRP11_Modelling_RF.ipynb   # Modelling notebook
+|
++---models
+|       cleaned_dataset.pkl   # Default training dataset
+|       feature_columns.pkl   # Features for training
+|       label_encoder.pkl   # Label encoder for training
+|       model.pkl.gz   # Compressed model (124MB -> 30MB)
+|       scaler.pkl   # StandardScaler() for Linear Regression features
+|
+\---src
+        model_compressor.py  # To run locally if model.pkl is too big to commit to GitHub
 ```
 
 ### **ii. Model Requirements**
